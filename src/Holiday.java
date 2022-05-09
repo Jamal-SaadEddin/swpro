@@ -34,10 +34,12 @@ public class Holiday extends javax.swing.JPanel {
         RequestButton = new javax.swing.JButton();
         Holiday = new javax.swing.JButton();
         Tasks = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        HolidayTable = new javax.swing.JTable();
         Meeting1 = new javax.swing.JButton();
         MOJY = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 0, 0));
@@ -93,28 +95,6 @@ public class Holiday extends javax.swing.JPanel {
         });
         jPanel1.add(Tasks, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 139, 57));
 
-        HolidayTable.setBackground(new java.awt.Color(153, 153, 153));
-        HolidayTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        HolidayTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null}
-            },
-            new String [] {
-                "Type Holiday", "Start Date", "End Date"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(HolidayTable);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, 550, 110));
-
         Meeting1.setBackground(new java.awt.Color(102, 102, 102));
         Meeting1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Meeting1.setText("Meeting");
@@ -128,6 +108,18 @@ public class Holiday extends javax.swing.JPanel {
         MOJY.setFont(new java.awt.Font("Cooper Black", 1, 55)); // NOI18N
         MOJY.setText("MOJY");
         jPanel1.add(MOJY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 60));
+
+        jLabel1.setText("Type of Holiday :");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, -1, -1));
+
+        jLabel3.setText("Start Date : ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, -1, -1));
+
+        jLabel4.setText("End Date : ");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sick Holiday", "Yearly Holiday" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\2222.jpg")); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 920, 430));
@@ -177,7 +169,6 @@ public class Holiday extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Holiday;
-    private javax.swing.JTable HolidayTable;
     private javax.swing.JLabel MOJY;
     private javax.swing.JButton Meeting1;
     private javax.swing.JButton RequestButton;
@@ -185,8 +176,11 @@ public class Holiday extends javax.swing.JPanel {
     private javax.swing.JTextField SearchText;
     private javax.swing.JButton SignOut;
     private javax.swing.JButton Tasks;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,6 +34,7 @@ public class Meeting extends javax.swing.JPanel {
         Meeting = new javax.swing.JButton();
         Holiday = new javax.swing.JButton();
         AcceptButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         MeetingTable = new javax.swing.JTable();
         MOJY = new javax.swing.JLabel();
@@ -57,7 +58,7 @@ public class Meeting extends javax.swing.JPanel {
         SearchButton.setBackground(new java.awt.Color(102, 102, 102));
         SearchButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         SearchButton.setText("Search...");
-        jPanel1.add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 25, 114, 48));
+        jPanel1.add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 25, 100, 48));
 
         SearchText.setBackground(new java.awt.Color(204, 204, 204));
         SearchText.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -92,6 +93,14 @@ public class Meeting extends javax.swing.JPanel {
             }
         });
         jPanel1.add(AcceptButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 139, 57));
+
+        jButton1.setText("Reject");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, 130, 60));
 
         MeetingTable.setBackground(new java.awt.Color(255, 51, 51));
         MeetingTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -174,6 +183,10 @@ public class Meeting extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_Tasks1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AcceptButton;
@@ -185,6 +198,7 @@ public class Meeting extends javax.swing.JPanel {
     private javax.swing.JTextField SearchText;
     private javax.swing.JButton SignOut;
     private javax.swing.JButton Tasks1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -29,20 +29,10 @@ public class vacations extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         vacations = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         search = new javax.swing.JComboBox<>();
-        jTextField6 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -54,70 +44,51 @@ public class vacations extends javax.swing.JFrame {
         vacations.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         vacations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "ID", "Holiday date", "Leave number", "reply?!"
+                "Name", "ID", "Holiday date", "End Date", "no.Hol", "Type Of Holiday"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(vacations);
+        if (vacations.getColumnModel().getColumnCount() > 0) {
+            vacations.getColumnModel().getColumn(1).setMinWidth(50);
+            vacations.getColumnModel().getColumn(1).setMaxWidth(10);
+            vacations.getColumnModel().getColumn(4).setMinWidth(50);
+            vacations.getColumnModel().getColumn(4).setMaxWidth(10);
+        }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 430, 110));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 670, 200));
 
         jLabel2.setBackground(new java.awt.Color(0, 102, 204));
         jLabel2.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
         jLabel2.setText("search by:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 120, 30));
-
-        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
-        jLabel3.setText("Holiday date:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 100, 20));
-
-        jLabel4.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel4.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
-        jLabel4.setText("ID:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 40, 20));
-
-        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel5.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
-        jLabel5.setText("Leave number:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, -1, 20));
-
-        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
-        jLabel6.setText("reply:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 50, 20));
-
-        jTextField1.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(89, 146, 204));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 80, -1));
-
-        jTextField2.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(89, 146, 204));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 80, -1));
-
-        jTextField3.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(89, 146, 204));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 80, -1));
-
-        jTextField4.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(89, 146, 204));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 80, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 120, 30));
 
         jTextField5.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(89, 146, 204));
@@ -126,7 +97,7 @@ public class vacations extends javax.swing.JFrame {
                 jTextField5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 90, 25));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 30, 130, 25));
 
         jButton1.setBackground(new java.awt.Color(89, 146, 204));
         jButton1.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
@@ -137,37 +108,28 @@ public class vacations extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 330, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 330, 30));
 
         jButton2.setBackground(new java.awt.Color(255, 0, 0));
         jButton2.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Bake");
+        jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 80, -1));
-
-        jLabel7.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel7.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
-        jLabel7.setText("Name:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, 50, 20));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 80, -1));
 
         search.setBackground(new java.awt.Color(89, 146, 204));
         search.setForeground(new java.awt.Color(255, 255, 255));
-        search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "ID", "Holiday date", "Leave number", "reply" }));
+        search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "ID", " " }));
         search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchActionPerformed(evt);
             }
         });
-        getContentPane().add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 70, 25));
-
-        jTextField6.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(89, 146, 204));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 80, -1));
+        getContentPane().add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 70, 25));
 
         jButton3.setBackground(new java.awt.Color(89, 146, 204));
         jButton3.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
@@ -178,7 +140,7 @@ public class vacations extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 140, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 140, -1));
 
         jButton4.setBackground(new java.awt.Color(89, 146, 204));
         jButton4.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
@@ -189,12 +151,12 @@ public class vacations extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 140, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 140, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Msys\\Desktop\\holiday.png")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, -10, 870, 380));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\holiday.png")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-300, -10, 1010, 380));
 
-        setSize(new java.awt.Dimension(587, 405));
+        setSize(new java.awt.Dimension(719, 405));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -264,18 +226,8 @@ public class vacations extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JComboBox<String> search;
     private javax.swing.JTable vacations;
     // End of variables declaration//GEN-END:variables

@@ -26,6 +26,8 @@ public class Meeting1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         vacations = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -40,12 +42,25 @@ public class Meeting1 extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        search = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         search1 = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Meeting Manage");
@@ -76,7 +91,7 @@ public class Meeting1 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(vacations);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 430, 110));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 660, 110));
 
         jLabel2.setBackground(new java.awt.Color(0, 102, 204));
         jLabel2.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
@@ -136,28 +151,18 @@ public class Meeting1 extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(255, 0, 0));
         jButton2.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Bake");
+        jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 80, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 80, -1));
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
         jLabel7.setText("Meeting topic:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, 20));
-
-        search.setBackground(new java.awt.Color(255, 255, 0));
-        search.setForeground(new java.awt.Color(255, 255, 255));
-        search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ZOOM", "Face to face" }));
-        search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchActionPerformed(evt);
-            }
-        });
-        getContentPane().add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 100, 25));
 
         jButton3.setBackground(new java.awt.Color(255, 255, 102));
         jButton3.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
@@ -167,22 +172,17 @@ public class Meeting1 extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 140, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 140, -1));
 
         jButton4.setBackground(new java.awt.Color(255, 255, 102));
         jButton4.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
-        jButton4.setText("Subtract");
+        jButton4.setText("Create");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 140, -1));
-
-        jLabel6.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel6.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
-        jLabel6.setText("Meeting type:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 100, 20));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 140, -1));
 
         search1.setBackground(new java.awt.Color(255, 255, 0));
         search1.setForeground(new java.awt.Color(255, 255, 255));
@@ -194,10 +194,25 @@ public class Meeting1 extends javax.swing.JFrame {
         });
         getContentPane().add(search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 130, 25));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Msys\\Desktop\\board-meeting.png")); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 0, 970, 370));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Accept / Reject"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable2);
 
-        setSize(new java.awt.Dimension(587, 408));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, 90));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\board-meeting.png")); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-190, -20, 890, 450));
+
+        setSize(new java.awt.Dimension(712, 468));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -220,10 +235,6 @@ public class Meeting1 extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -278,15 +289,17 @@ public class Meeting1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JComboBox<String> search;
     private javax.swing.JComboBox<String> search1;
     private javax.swing.JTable vacations;
     // End of variables declaration//GEN-END:variables

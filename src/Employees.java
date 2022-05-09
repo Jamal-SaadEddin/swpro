@@ -142,7 +142,7 @@ public class Employees extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(255, 0, 0));
         jButton2.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Bake");
+        jButton2.setText("Back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -157,7 +157,12 @@ public class Employees extends javax.swing.JFrame {
 
         search.setBackground(new java.awt.Color(89, 146, 204));
         search.setForeground(new java.awt.Color(255, 255, 255));
-        search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "ID", "Phone", "Email", "Salary" }));
+        search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Email", " " }));
+        search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchActionPerformed(evt);
+            }
+        });
         getContentPane().add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 70, 25));
 
         jTextField6.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
@@ -212,6 +217,10 @@ public class Employees extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchActionPerformed
 
     /**
      * @param args the command line arguments

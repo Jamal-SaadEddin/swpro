@@ -45,6 +45,8 @@ public class Employees extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,7 +78,7 @@ public class Employees extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Employees);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 410, 110));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 520, 110));
 
         jLabel2.setBackground(new java.awt.Color(0, 102, 204));
         jLabel2.setFont(new java.awt.Font("Harrington", 1, 24)); // NOI18N
@@ -85,8 +87,8 @@ public class Employees extends javax.swing.JFrame {
 
         jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
-        jLabel3.setText("ID:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 30, 20));
+        jLabel3.setText("Address:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, 60, 20));
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
@@ -101,7 +103,7 @@ public class Employees extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(0, 0, 0));
         jLabel6.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
         jLabel6.setText("Salary:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 50, 20));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 50, 20));
 
         jTextField1.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(89, 146, 204));
@@ -109,7 +111,7 @@ public class Employees extends javax.swing.JFrame {
 
         jTextField2.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(89, 146, 204));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 80, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 110, -1));
 
         jTextField3.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(89, 146, 204));
@@ -117,7 +119,7 @@ public class Employees extends javax.swing.JFrame {
 
         jTextField4.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(89, 146, 204));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 80, -1));
+        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 110, -1));
 
         jTextField5.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(89, 146, 204));
@@ -148,7 +150,7 @@ public class Employees extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 100, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 100, -1));
 
         jLabel7.setBackground(new java.awt.Color(0, 0, 0));
         jLabel7.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
@@ -167,7 +169,7 @@ public class Employees extends javax.swing.JFrame {
 
         jTextField6.setFont(new java.awt.Font("Georgia", 1, 12)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(89, 146, 204));
-        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 80, -1));
+        getContentPane().add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 80, -1));
 
         jButton3.setBackground(new java.awt.Color(89, 146, 204));
         jButton3.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
@@ -190,6 +192,11 @@ public class Employees extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 100, -1));
+
+        jLabel8.setFont(new java.awt.Font("Harrington", 1, 14)); // NOI18N
+        jLabel8.setText("Password:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 70, 20));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 110, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\employees.jpg")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 360));
@@ -270,6 +277,8 @@ public class Employees extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

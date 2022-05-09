@@ -123,7 +123,7 @@ public class vacations extends javax.swing.JFrame {
 
         search.setBackground(new java.awt.Color(89, 146, 204));
         search.setForeground(new java.awt.Color(255, 255, 255));
-        search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Name", "ID", " " }));
+        search.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", " " }));
         search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchActionPerformed(evt);

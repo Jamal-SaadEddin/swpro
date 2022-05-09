@@ -94,6 +94,7 @@ public class Meeting extends javax.swing.JPanel {
         });
         jPanel1.add(AcceptButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 139, 57));
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Reject");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,18 +103,25 @@ public class Meeting extends javax.swing.JPanel {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, 130, 60));
 
-        MeetingTable.setBackground(new java.awt.Color(255, 51, 51));
+        MeetingTable.setBackground(new java.awt.Color(240, 240, 240));
         MeetingTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         MeetingTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Number of Meeting", "Date", "accept/reject"
+                "Meeting Topic", "Meeting Date", "Meeting Day", "Meeting Place"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, false
+                true, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

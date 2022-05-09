@@ -122,8 +122,8 @@ public class Tasks extends javax.swing.JPanel {
         MOJY.setText("MOJY");
         add(MOJY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Yahia Arafat\\Documents\\NetBeansProjects\\SoftProj\\11.jpg")); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 1050, 530));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\11.jpg")); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 1000, 530));
     }// </editor-fold>//GEN-END:initComponents
 
     private void SignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutActionPerformed

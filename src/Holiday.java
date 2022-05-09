@@ -129,7 +129,7 @@ public class Holiday extends javax.swing.JPanel {
         MOJY.setText("MOJY");
         jPanel1.add(MOJY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 60));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Yahia Arafat\\Documents\\NetBeansProjects\\SoftProj\\2222.jpg")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\2222.jpg")); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 920, 430));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

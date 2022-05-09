@@ -129,7 +129,7 @@ public class Meeting extends javax.swing.JPanel {
         });
         jPanel1.add(Tasks1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 139, 57));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Yahia Arafat\\Documents\\NetBeansProjects\\SoftProj\\3333.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\3333.jpg")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 1000, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

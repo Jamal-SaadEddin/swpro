@@ -1,3 +1,16 @@
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,7 +22,7 @@
  * @author Msys
  */
 public class LoginForm extends javax.swing.JFrame {
-
+public static int Emp_ID;
     /**
      * Creates new form LoginForm
      */
@@ -48,7 +61,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("User Name:");
+        jLabel3.setText("User ID :");
 
         jLabel4.setFont(new java.awt.Font("Harrington", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,7 +154,38 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int helloJamal;
+        try{
+            
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/swpro","root", "");
+            Statement stmt = conn.createStatement();
+            String sqlstr="SELECT * FROM person WHERE id=? and password=? ;";
+            PreparedStatement pst=conn.prepareStatement(sqlstr);
+            pst.setString(1, jTextField1.getText());
+            pst.setString(2, jPasswordField1.getText());
+            ResultSet rs=pst.executeQuery();
+            if(rs.next()){
+            Emp_ID = Integer.parseInt(jTextField1.getText());
+            jTextField1.setText("");
+            jPasswordField1.setText("");
+            String sqls="SELECT level FROM person WHERE  password= ;";
+            
+            this.setVisible(false);
+            Main g=new Main();
+            g.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Username or Password is not corrct");
+                jTextField1.setText("");
+                jPasswordField1.setText("");
+            }
+            conn.setAutoCommit(false);
+            stmt.executeUpdate(sqlstr);
+            conn.close();
+            
+    }
+        catch (SQLException ex) {
+           // Logger.getLogger(Meeting1.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed

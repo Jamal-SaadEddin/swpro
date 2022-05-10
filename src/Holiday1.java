@@ -1,3 +1,13 @@
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,7 +19,7 @@
  * @author Jamal
  */
 public class Holiday1 extends javax.swing.JFrame {
-
+LoginForm log = new LoginForm();
     /**
      * Creates new form Holiday1
      */
@@ -26,18 +36,16 @@ public class Holiday1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        SignOut = new javax.swing.JButton();
-        SearchButton = new javax.swing.JButton();
-        SearchText = new javax.swing.JTextField();
-        RequestButton = new javax.swing.JButton();
-        Holiday = new javax.swing.JButton();
-        Tasks = new javax.swing.JButton();
         Meeting1 = new javax.swing.JButton();
-        MOJY = new javax.swing.JLabel();
+        Tasks = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        RequestButton = new javax.swing.JButton();
+        SearchText = new javax.swing.JTextField();
+        SignOut = new javax.swing.JButton();
+        Holiday = new javax.swing.JButton();
+        SearchButton = new javax.swing.JButton();
+        MOJY = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
@@ -45,59 +53,7 @@ public class Holiday1 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel2.setBackground(new java.awt.Color(255, 0, 0));
-        jPanel2.setPreferredSize(new java.awt.Dimension(700, 500));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        SignOut.setBackground(new java.awt.Color(153, 0, 0));
-        SignOut.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        SignOut.setText("Sign Out");
-        SignOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SignOutActionPerformed(evt);
-            }
-        });
-        jPanel2.add(SignOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(775, 25, 111, 48));
-
-        SearchButton.setBackground(new java.awt.Color(102, 102, 102));
-        SearchButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        SearchButton.setText("Search...");
-        jPanel2.add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 25, 114, 48));
-
-        SearchText.setBackground(new java.awt.Color(204, 204, 204));
-        SearchText.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        SearchText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchTextActionPerformed(evt);
-            }
-        });
-        jPanel2.add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 25, 273, 48));
-
-        RequestButton.setBackground(new java.awt.Color(204, 0, 0));
-        RequestButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        RequestButton.setText("Request");
-        RequestButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RequestButtonActionPerformed(evt);
-            }
-        });
-        jPanel2.add(RequestButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 139, 57));
-
-        Holiday.setBackground(new java.awt.Color(102, 102, 102));
-        Holiday.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Holiday.setText("Holiday");
-        jPanel2.add(Holiday, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 140, 60));
-
-        Tasks.setBackground(new java.awt.Color(102, 102, 102));
-        Tasks.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Tasks.setText("Tasks");
-        Tasks.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TasksActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Tasks, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 139, 57));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Meeting1.setBackground(new java.awt.Color(102, 102, 102));
         Meeting1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -107,23 +63,72 @@ public class Holiday1 extends javax.swing.JFrame {
                 Meeting1ActionPerformed(evt);
             }
         });
-        jPanel2.add(Meeting1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 139, 57));
+        getContentPane().add(Meeting1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 139, 57));
 
-        MOJY.setFont(new java.awt.Font("Cooper Black", 1, 55)); // NOI18N
-        MOJY.setText("MOJY");
-        jPanel2.add(MOJY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 60));
+        Tasks.setBackground(new java.awt.Color(102, 102, 102));
+        Tasks.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Tasks.setText("Tasks");
+        Tasks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TasksActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Tasks, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 139, 57));
 
         jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         jLabel1.setText("Type of Holiday :");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 140, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         jLabel3.setText("Start Date : ");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, -1, -1));
+
+        RequestButton.setBackground(new java.awt.Color(204, 0, 0));
+        RequestButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        RequestButton.setText("Request");
+        RequestButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RequestButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(RequestButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 280, 57));
+
+        SearchText.setBackground(new java.awt.Color(204, 204, 204));
+        SearchText.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        SearchText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchTextActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 25, 273, 48));
+
+        SignOut.setBackground(new java.awt.Color(153, 0, 0));
+        SignOut.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        SignOut.setText("Sign Out");
+        SignOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignOutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SignOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(775, 25, 111, 48));
+
+        Holiday.setBackground(new java.awt.Color(102, 102, 102));
+        Holiday.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Holiday.setText("Holiday");
+        getContentPane().add(Holiday, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 140, 60));
+
+        SearchButton.setBackground(new java.awt.Color(102, 102, 102));
+        SearchButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        SearchButton.setText("Search...");
+        getContentPane().add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 25, 114, 48));
+
+        MOJY.setFont(new java.awt.Font("Cooper Black", 1, 55)); // NOI18N
+        MOJY.setText("MOJY");
+        getContentPane().add(MOJY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 60));
 
         jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
         jLabel4.setText("End Date : ");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sick Holiday", "Yearly Holiday" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -131,60 +136,27 @@ public class Holiday1 extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, 30));
-        jPanel2.add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 180, 130, 30));
-        jPanel2.add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, 130, 30));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 130, 30));
+
+        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jFormattedTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 180, 130, 30));
+        getContentPane().add(jFormattedTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, 130, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\2222.jpg")); // NOI18N
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 920, 430));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 937, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 913, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(23, Short.MAX_VALUE)))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 937, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 920, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void SignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutActionPerformed
         // TODO add your handling code here:
+        log.Emp_ID = 0;
+        this.dispose();
+        log.setVisible(true);
     }//GEN-LAST:event_SignOutActionPerformed
 
     private void SearchTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTextActionPerformed
@@ -193,19 +165,43 @@ public class Holiday1 extends javax.swing.JFrame {
 
     private void RequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestButtonActionPerformed
         // TODO add your handling code here:
+        if(jFormattedTextField1.getText().isEmpty() || jFormattedTextField2.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Insert your holiday Start and End Date");
+            return;
+        }
+        try{      
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/swpro","root", "");
+            Statement stmt = conn.createStatement();
+            String sqlstr="INSERT INTO `vacation` (`ID`, `E_ID`, `VDate`, `endDate`, `holidayType`, `reply`) VALUES (NULL, '"+log.Emp_ID+"', '"+jFormattedTextField1.getText()+"', '"+jFormattedTextField2.getText()+"', '"+jComboBox1.getSelectedItem()+"', NULL)";
+            stmt.executeUpdate(sqlstr);
+            conn.close();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(Meeting1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_RequestButtonActionPerformed
 
     private void TasksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TasksActionPerformed
         // TODO add your handling code here:
+        Tasks task = new Tasks();
+        this.dispose();
+        task.setVisible(true);
     }//GEN-LAST:event_TasksActionPerformed
 
     private void Meeting1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Meeting1ActionPerformed
         // TODO add your handling code here:
+        Meeting meet = new Meeting();
+        this.dispose();
+        meet.setVisible(true);
     }//GEN-LAST:event_Meeting1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,7 +254,5 @@ public class Holiday1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

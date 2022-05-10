@@ -1,20 +1,120 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+class Vac{
+    private String type;
+    Date startDate,endDate;
+    private int ID;
+    
+    public Vac(Date startDate, Date endDate, String type, int ID){
+        this.type=type;
+        this.startDate=startDate;
+        this.endDate=endDate;
+        this.ID=ID;
+    }
+   /* public int getid(){
+        return ID;
+}*/
+       public String getType(){
+        return type;
+}
+        public Date getStartDate(){
+        return startDate;
+}
+         public Date getEndDate(){
+        return endDate;
+}
+         public int getID(){
+        return ID;
+}
+        
+    
+}
 /**
  *
  * @author Msys
  */
 public class vacations extends javax.swing.JFrame {
+public static String Name;
+public static int E_ID,noOfHolidays;
 
     /**
      * Creates new form Employees
      */
     public vacations() {
         initComponents();
+        show_vacations();
+    }
+    public ArrayList<Vac> vacList(String sa){
+    ArrayList<Vac> vacList =new ArrayList<>();
+    
+                  try{        
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/swpro","root", "");
+        
+            Statement stmt = conn.createStatement();
+            String sqlstr="Select * FROM vacation where "+sa;
+            ResultSet rs=stmt.executeQuery(sqlstr);
+            //stmt.executeUpdate(sqlstr);
+            
+            
+            Vac v;
+            while(rs.next()){
+                E_ID = rs.getInt("E_ID");
+                Statement stmt1 = conn.createStatement();
+                String sqlstr1="Select * FROM person where id = "+E_ID;
+                
+                ResultSet rs1=stmt1.executeQuery(sqlstr1);
+                while(rs1.next()){
+                    Name = rs1.getString("fName")+" "+rs1.getString("mName")+ " "+rs1.getString("lName");
+                    noOfHolidays = rs1.getInt("no_Holidays");
+                }
+                
+                v = new Vac(rs.getDate("VDate"),rs.getDate("endDate"),rs.getString("holidayType"),rs.getInt("ID"));
+                vacList.add(v);
+                
+            }
+            conn.close();
+          /*  jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");*/
+           //JOptionPane.showMessageDialog(this, "Successfully Added");
+    }
+        catch (SQLException ex) {
+            Logger.getLogger(Meeting1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return vacList;          
+    }
+    public void show_vacations(){
+        ArrayList<Vac> list=vacList("reply is NULL");
+        DefaultTableModel model=(DefaultTableModel) vacations.getModel();
+        Object []row =new Object[7];
+        for(int i=0; i<list.size();i++){
+            row[0]=Name;
+            row[1]=E_ID;
+            row[2]=list.get(i).getStartDate();
+            row[3]=list.get(i).getEndDate();
+            row[4]=noOfHolidays;
+            row[5]=list.get(i).getType();
+            row[6]=list.get(i).getID();
+            model.addRow(row);
+           
+        }
     }
 
     /**
@@ -44,27 +144,17 @@ public class vacations extends javax.swing.JFrame {
         vacations.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         vacations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Name", "ID", "Holiday date", "End Date", "no.Hol", "Type Of Holiday"
+                "Employee Name", "E_ID", "Holiday date", "End Date", "no.Hol", "Type Of Holiday", "H_ID"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -162,14 +252,61 @@ public class vacations extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if(jTextField5.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please Enter Vacation ID");
+            return;
+        }
+        try{
+            int v_id = Integer.parseInt(jTextField5.getText());
+            ArrayList<Vac> list=vacList("ID = "+v_id);
+            DefaultTableModel model=(DefaultTableModel) vacations.getModel();
+            model.setRowCount(0);
+            Object []row =new Object[7];
+            for(int i=0; i<list.size();i++){
+                row[0]=Name;
+                row[1]=E_ID;
+                row[2]=list.get(i).getStartDate();
+                row[3]=list.get(i).getEndDate();
+                row[4]=noOfHolidays;
+                row[5]=list.get(i).getType();
+                row[6]=list.get(i).getID();
+                model.addRow(row);
+        }
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Vacation ID must be Number only");
+            jTextField5.setText("");
+            return;
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        Main frame = new Main();
+        frame.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        if(vacations.getSelectionModel().isSelectionEmpty()){
+            JOptionPane.showMessageDialog(this, "Please select Vacation from the table");
+            return;
+        }
+        int column = 6;
+        int row = vacations.getSelectedRow();
+        String value = vacations.getModel().getValueAt(row, column).toString();
+        int v_id = Integer.parseInt(value);
+        try{        
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/swpro","root", "");
+            Statement stmt = conn.createStatement();
+            String sqlstr="UPDATE `vacation` SET `reply` = 'Rejected' WHERE `vacation`.`ID` = "+v_id;
+            stmt.executeUpdate(sqlstr);
+            conn.close();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(Meeting1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
@@ -178,6 +315,24 @@ public class vacations extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        if(vacations.getSelectionModel().isSelectionEmpty()){
+            JOptionPane.showMessageDialog(this, "Please select Vacation from the table");
+            return;
+        }
+        int column = 6;
+        int row = vacations.getSelectedRow();
+        String value = vacations.getModel().getValueAt(row, column).toString();
+        int v_id = Integer.parseInt(value);
+        try{        
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/swpro","root", "");
+            Statement stmt = conn.createStatement();
+            String sqlstr="UPDATE `vacation` SET `reply` = 'Accepted' WHERE `vacation`.`ID` = "+v_id;
+            stmt.executeUpdate(sqlstr);
+            conn.close();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(Meeting1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed

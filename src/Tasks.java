@@ -1,21 +1,90 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package softproj;
-
+class task{
+    private String description;
+    Date deadLine;
+    private int task_No;
+    
+    public task(int task_No, String description, Date deadLine){
+        this.task_No=task_No;
+        this.description=description;
+        this.deadLine=deadLine;
+    }
+   /* public int getid(){
+        return ID;
+}*/
+       public int getTask_No(){
+        return task_No;
+}
+        public Date getDeadLine(){
+        return deadLine;
+}
+         public String getDescription(){
+        return description;
+}
+       
+        
+    
+}
 /**
  *
- * @author Yahia Arafat
+ * @author Jamal
  */
-public class Tasks extends javax.swing.JPanel {
-
+public class Tasks extends javax.swing.JFrame {
+    LoginForm log = new LoginForm();
     /**
      * Creates new form Tasks
      */
     public Tasks() {
         initComponents();
+        show_tasks();
+    }
+    public ArrayList<task> taskList(String sa){
+    ArrayList<task> taskList =new ArrayList<>();
+    
+                  try{        
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/swpro","root", "");
+            Statement stmt = conn.createStatement();
+            String sqlstr="Select * FROM tasks where "+sa;
+            ResultSet rs=stmt.executeQuery(sqlstr);
+            task t;
+            while(rs.next()){
+                t = new task(rs.getInt("task_No"),rs.getString("description"),rs.getDate("deadLine"));
+                taskList.add(t);  
+            }
+            conn.close();
+    }
+        catch (SQLException ex) {
+            Logger.getLogger(Meeting1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return taskList;          
+    }
+    public void show_tasks(){
+        ArrayList<task> list=taskList("Done is NULL");
+        DefaultTableModel model=(DefaultTableModel) TasksTable.getModel();
+        Object []row =new Object[3];
+        for(int i=0; i<list.size();i++){
+            row[0]=list.get(i).getTask_No();
+            row[1]=list.get(i).getDescription();
+            row[2]=list.get(i).getDeadLine();
+            model.addRow(row);
+        }
     }
 
     /**
@@ -27,35 +96,34 @@ public class Tasks extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SignOut = new javax.swing.JButton();
         SearchButton = new javax.swing.JButton();
+        SignOut1 = new javax.swing.JButton();
         SearchText = new javax.swing.JTextField();
         Meeting = new javax.swing.JButton();
-        Holiday = new javax.swing.JButton();
         Tasks = new javax.swing.JButton();
+        Holiday = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TasksTable = new javax.swing.JTable();
         MOJY = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 0, 0));
-        setPreferredSize(new java.awt.Dimension(700, 500));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        SignOut.setBackground(new java.awt.Color(153, 0, 0));
-        SignOut.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        SignOut.setText("Sign Out");
-        SignOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SignOutActionPerformed(evt);
-            }
-        });
-        add(SignOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(775, 25, 111, 48));
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         SearchButton.setBackground(new java.awt.Color(102, 102, 102));
         SearchButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         SearchButton.setText("Search...");
-        add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 25, 114, 48));
+        getContentPane().add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 25, 114, 48));
+
+        SignOut1.setBackground(new java.awt.Color(153, 0, 0));
+        SignOut1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        SignOut1.setText("Sign Out");
+        SignOut1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SignOut1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(SignOut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(775, 25, 111, 48));
 
         SearchText.setBackground(new java.awt.Color(204, 204, 204));
         SearchText.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -64,7 +132,7 @@ public class Tasks extends javax.swing.JPanel {
                 SearchTextActionPerformed(evt);
             }
         });
-        add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 25, 273, 48));
+        getContentPane().add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 25, 273, 48));
 
         Meeting.setBackground(new java.awt.Color(102, 102, 102));
         Meeting.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -74,12 +142,7 @@ public class Tasks extends javax.swing.JPanel {
                 MeetingActionPerformed(evt);
             }
         });
-        add(Meeting, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 139, 57));
-
-        Holiday.setBackground(new java.awt.Color(102, 102, 102));
-        Holiday.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Holiday.setText("Holiday");
-        add(Holiday, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 140, 60));
+        getContentPane().add(Meeting, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 139, 57));
 
         Tasks.setBackground(new java.awt.Color(102, 102, 102));
         Tasks.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -89,20 +152,30 @@ public class Tasks extends javax.swing.JPanel {
                 TasksActionPerformed(evt);
             }
         });
-        add(Tasks, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 139, 57));
+        getContentPane().add(Tasks, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 139, 57));
 
-        TasksTable.setBackground(new java.awt.Color(255, 51, 51));
-        TasksTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Holiday.setBackground(new java.awt.Color(102, 102, 102));
+        Holiday.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        Holiday.setText("Holiday");
+        Holiday.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HolidayActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Holiday, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 140, 60));
+
+        TasksTable.setBackground(new java.awt.Color(240, 240, 240));
+        TasksTable.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 12)); // NOI18N
         TasksTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Number", "Type", "Deadline"
+                "Number", "Description", "Deadline"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, true, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -111,37 +184,87 @@ public class Tasks extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(TasksTable);
         if (TasksTable.getColumnModel().getColumnCount() > 0) {
-            TasksTable.getColumnModel().getColumn(0).setHeaderValue("Number");
-            TasksTable.getColumnModel().getColumn(1).setHeaderValue("Type");
-            TasksTable.getColumnModel().getColumn(2).setHeaderValue("Deadline");
+            TasksTable.getColumnModel().getColumn(0).setMinWidth(50);
+            TasksTable.getColumnModel().getColumn(0).setMaxWidth(10);
+            TasksTable.getColumnModel().getColumn(2).setMinWidth(80);
+            TasksTable.getColumnModel().getColumn(2).setMaxWidth(40);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 550, 280));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 550, 280));
 
         MOJY.setFont(new java.awt.Font("Cooper Black", 1, 55)); // NOI18N
         MOJY.setText("MOJY");
-        add(MOJY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 60));
+        getContentPane().add(MOJY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\11.jpg")); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 1000, 530));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 1000, 530));
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutActionPerformed
+    private void SignOut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOut1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SignOutActionPerformed
+        log.Emp_ID = 0;
+        this.dispose();
+        log.setVisible(true);
+    }//GEN-LAST:event_SignOut1ActionPerformed
+
+    private void SearchTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SearchTextActionPerformed
 
     private void MeetingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MeetingActionPerformed
         // TODO add your handling code here:
+        Meeting meet = new Meeting();
+        this.dispose();
+        meet.setVisible(true);
     }//GEN-LAST:event_MeetingActionPerformed
 
     private void TasksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TasksActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TasksActionPerformed
 
-    private void SearchTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTextActionPerformed
+    private void HolidayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HolidayActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SearchTextActionPerformed
+        Holiday1 holi = new Holiday1();
+        this.dispose();
+        holi.setVisible(true);
+    }//GEN-LAST:event_HolidayActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Tasks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Tasks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Tasks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Tasks.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Tasks().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Holiday;
@@ -149,7 +272,7 @@ public class Tasks extends javax.swing.JPanel {
     private javax.swing.JButton Meeting;
     private javax.swing.JButton SearchButton;
     private javax.swing.JTextField SearchText;
-    private javax.swing.JButton SignOut;
+    private javax.swing.JButton SignOut1;
     private javax.swing.JButton Tasks;
     private javax.swing.JTable TasksTable;
     private javax.swing.JLabel jLabel1;

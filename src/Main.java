@@ -96,6 +96,9 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        this.dispose();
+        Holiday1 h = new Holiday1();
+        h.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -128,7 +131,7 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Employees().setVisible(true);
+                new Meeting().setVisible(true);
                
             }
         });

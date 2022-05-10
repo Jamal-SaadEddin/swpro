@@ -1,3 +1,16 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,6 +21,47 @@
  *
  * @author Msys
  */
+class User{
+    private int ID,coming,notComing;
+    private String meetPlace,meetDay,meetTopic,type;
+    Date meetDate;
+    
+    public User(String meetPlace,String meetDay,String meetTopic,Date meetDate,int coming,int notComing){
+       // this.ID=ID;
+        this.meetPlace=meetPlace;
+        this.meetDay=meetDay;
+        this.meetTopic=meetTopic;
+        this.meetDate=meetDate;
+        this.coming = coming;
+        this.notComing = notComing;
+       // this.type=type;
+    }
+   /* public int getid(){
+        return ID;
+}*/
+       public String getmp(){
+        return meetPlace;
+}
+      public String getmd(){
+        return meetDay;
+}
+    public String getmt(){
+        return meetTopic;
+}
+        public Date getdate(){
+        return meetDate;
+}
+        public int geComing(){    
+        return coming;
+}
+        public int geNotComing(){
+        return notComing;
+}
+      /* public String gettype(){
+        return type;
+}*/
+    
+}
 public class Meeting1 extends javax.swing.JFrame {
 
     /**
@@ -15,6 +69,50 @@ public class Meeting1 extends javax.swing.JFrame {
      */
     public Meeting1() {
         initComponents();
+        show_user();
+    }
+    public ArrayList<User> userList(){
+    ArrayList<User> userList =new ArrayList<>();
+                  try{        
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/swpro","root", "");
+        
+            Statement stmt = conn.createStatement();
+            String sqlstr="Select * FROM meeting";
+            ResultSet rs=stmt.executeQuery(sqlstr);
+            JOptionPane.showMessageDialog(this, rs.getString("meetPlace"));
+            //stmt.executeUpdate(sqlstr);
+            User user;
+            while(rs.next()){
+                user=new User(rs.getString("meetPlace"),rs.getString("meetDay"),rs.getString("meetTopic"),rs.getDate("meetDate"),rs.getInt("coming"),rs.getInt("notComing"));
+                userList.add(user);
+                JOptionPane.showMessageDialog(this, user.meetDate);
+            }
+            conn.close();
+          /*  jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");*/
+           JOptionPane.showMessageDialog(this, "123Successfully Added");
+    }
+        catch (SQLException ex) {
+            Logger.getLogger(Meeting1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return userList;          
+    }
+    public void show_user(){
+        ArrayList<User> list=userList();
+        DefaultTableModel model=(DefaultTableModel) vacations.getModel();
+        Object []row =new Object[6];
+        for(int i=0; i<list.size();i++){
+            row[0]=list.get(i).getmt();
+            row[1]=list.get(i).getmd();
+            row[2]=list.get(i).getdate();
+            row[3]=list.get(i).getmp();
+            row[4]=list.get(i).geComing();
+            row[5]=list.get(i).geNotComing();
+            model.addRow(row);
+           
+        }
     }
 
     /**
@@ -67,13 +165,7 @@ public class Meeting1 extends javax.swing.JFrame {
         vacations.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         vacations.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "meeting topic", "meeting day", "meeting date", "Meeting Place", "Coming", "Not Coming"

@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package softproj;
 
 /**
  *
- * @author Yahia Arafat
+ * @author Jamal
  */
-public class Meeting extends javax.swing.JPanel {
+public class Meeting extends javax.swing.JFrame {
 
     /**
      * Creates new form Meeting
@@ -27,9 +26,8 @@ public class Meeting extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        SignOut = new javax.swing.JButton();
         SearchButton = new javax.swing.JButton();
+        SignOut = new javax.swing.JButton();
         SearchText = new javax.swing.JTextField();
         Meeting = new javax.swing.JButton();
         Holiday = new javax.swing.JButton();
@@ -41,9 +39,13 @@ public class Meeting extends javax.swing.JPanel {
         Tasks1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(255, 0, 0));
-        jPanel1.setPreferredSize(new java.awt.Dimension(700, 500));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        SearchButton.setBackground(new java.awt.Color(102, 102, 102));
+        SearchButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        SearchButton.setText("Search...");
+        getContentPane().add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 25, 100, 48));
 
         SignOut.setBackground(new java.awt.Color(153, 0, 0));
         SignOut.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -53,12 +55,7 @@ public class Meeting extends javax.swing.JPanel {
                 SignOutActionPerformed(evt);
             }
         });
-        jPanel1.add(SignOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(775, 25, 111, 48));
-
-        SearchButton.setBackground(new java.awt.Color(102, 102, 102));
-        SearchButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        SearchButton.setText("Search...");
-        jPanel1.add(SearchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 25, 100, 48));
+        getContentPane().add(SignOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(775, 25, 111, 48));
 
         SearchText.setBackground(new java.awt.Color(204, 204, 204));
         SearchText.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -67,7 +64,7 @@ public class Meeting extends javax.swing.JPanel {
                 SearchTextActionPerformed(evt);
             }
         });
-        jPanel1.add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 25, 273, 48));
+        getContentPane().add(SearchText, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 25, 273, 48));
 
         Meeting.setBackground(new java.awt.Color(102, 102, 102));
         Meeting.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -77,12 +74,12 @@ public class Meeting extends javax.swing.JPanel {
                 MeetingActionPerformed(evt);
             }
         });
-        jPanel1.add(Meeting, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 139, 57));
+        getContentPane().add(Meeting, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 139, 57));
 
         Holiday.setBackground(new java.awt.Color(102, 102, 102));
         Holiday.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Holiday.setText("Holiday");
-        jPanel1.add(Holiday, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 140, 60));
+        getContentPane().add(Holiday, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 140, 60));
 
         AcceptButton.setBackground(new java.awt.Color(204, 0, 51));
         AcceptButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -92,7 +89,7 @@ public class Meeting extends javax.swing.JPanel {
                 AcceptButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(AcceptButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 139, 57));
+        getContentPane().add(AcceptButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, 139, 57));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Reject");
@@ -101,7 +98,7 @@ public class Meeting extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, 130, 60));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 360, 130, 60));
 
         MeetingTable.setBackground(new java.awt.Color(240, 240, 240));
         MeetingTable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -130,11 +127,11 @@ public class Meeting extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(MeetingTable);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 550, 170));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 550, 170));
 
         MOJY.setFont(new java.awt.Font("Cooper Black", 1, 55)); // NOI18N
         MOJY.setText("MOJY");
-        jPanel1.add(MOJY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 60));
+        getContentPane().add(MOJY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 60));
 
         Tasks1.setBackground(new java.awt.Color(102, 102, 102));
         Tasks1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -144,31 +141,12 @@ public class Meeting extends javax.swing.JPanel {
                 Tasks1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Tasks1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 139, 57));
+        getContentPane().add(Tasks1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 139, 57));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\3333.jpg")); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 1000, 530));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 1000, 530));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 924, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 924, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 526, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void SignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SignOutActionPerformed
@@ -187,14 +165,48 @@ public class Meeting extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_AcceptButtonActionPerformed
 
-    private void Tasks1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tasks1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Tasks1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void Tasks1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Tasks1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Tasks1ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Meeting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Meeting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Meeting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Meeting.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Meeting().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AcceptButton;
@@ -208,7 +220,6 @@ public class Meeting extends javax.swing.JPanel {
     private javax.swing.JButton Tasks1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

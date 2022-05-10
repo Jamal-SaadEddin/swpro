@@ -282,7 +282,7 @@ public class Meeting1 extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\board-meeting.png")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-190, -20, 890, 360));
 
-        setSize(new java.awt.Dimension(712, 379));
+        setSize(new java.awt.Dimension(712, 383));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

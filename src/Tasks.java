@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -105,6 +106,7 @@ public class Tasks extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TasksTable = new javax.swing.JTable();
         MOJY = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -190,11 +192,20 @@ public class Tasks extends javax.swing.JFrame {
             TasksTable.getColumnModel().getColumn(2).setMaxWidth(40);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 550, 280));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 160, 550, 200));
 
         MOJY.setFont(new java.awt.Font("Cooper Black", 1, 55)); // NOI18N
         MOJY.setText("MOJY");
         getContentPane().add(MOJY, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 220, 60));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setText("Mark as Done");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(713, 390, 160, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jamal\\Documents\\NetBeansProjects\\SoftProj\\images\\11.jpg")); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, 0, 1000, 530));
@@ -230,6 +241,31 @@ public class Tasks extends javax.swing.JFrame {
         this.dispose();
         holi.setVisible(true);
     }//GEN-LAST:event_HolidayActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(TasksTable.getSelectionModel().isSelectionEmpty()){
+            JOptionPane.showMessageDialog(this, "Please select Task from the table");
+            return;
+        }
+        int column = 0;
+        int row = TasksTable.getSelectedRow();
+        String value = TasksTable.getModel().getValueAt(row, column).toString();
+        int t_id = Integer.parseInt(value);
+        try{        
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/swpro","root", "");
+            Statement stmt = conn.createStatement();
+            String sqlstr="UPDATE `tasks` SET `Done` = 'Yes' WHERE `tasks`.`task_No` = "+t_id;
+            stmt.executeUpdate(sqlstr);
+            conn.close();
+            DefaultTableModel model=(DefaultTableModel) TasksTable.getModel();
+            model.setRowCount(0);
+            show_tasks();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(Meeting1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,6 +311,7 @@ public class Tasks extends javax.swing.JFrame {
     private javax.swing.JButton SignOut1;
     private javax.swing.JButton Tasks;
     private javax.swing.JTable TasksTable;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

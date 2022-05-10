@@ -115,6 +115,11 @@ LoginForm log = new LoginForm();
         Holiday.setBackground(new java.awt.Color(102, 102, 102));
         Holiday.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         Holiday.setText("Holiday");
+        Holiday.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HolidayActionPerformed(evt);
+            }
+        });
         getContentPane().add(Holiday, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 140, 60));
 
         SearchButton.setBackground(new java.awt.Color(102, 102, 102));
@@ -202,6 +207,10 @@ LoginForm log = new LoginForm();
     private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
+
+    private void HolidayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HolidayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HolidayActionPerformed
 
     /**
      * @param args the command line arguments
